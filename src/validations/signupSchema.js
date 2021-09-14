@@ -7,16 +7,14 @@ export default yup.object().shape({
 
     username: yup
         .string()
-        .required("Username is required"),
+        .required("Username is required")
+        .min(6),
     email: yup
         .string()
         .email("Must be a valid email")
         .required("Email is required"),
 
     password: yup.string().required('Password is required').min(6),
-    passwordConfirmation: yup.string()
-        .oneOf([yup.ref('password'), null], "Passwords must match"),
-
     role_id: yup
         .string()
         .oneOf(["1", "2"], "User role is required and can be change later"),

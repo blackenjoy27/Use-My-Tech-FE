@@ -100,14 +100,23 @@ export default function () {
     }, [newUser])
 
     const updateNewUser = (e) => {
-        yup.reach(schema, e.target.name)
-            .validate(e.target.value)
-            .then(() => {
-                setFormErrors({ ...formErrors, [e.target.name]: "" })
-            })
-            .catch(err => {
-                setFormErrors({ ...formErrors, [e.target.name]: err.errors })
-            })
+        if (e.target.name === "passwordConfirmation") {
+            if (e.target.value !== newUser.password) {
+                setFormErrors({ ...formErrors, passwordConfirmation: "Password need to match up" })
+            } else {
+                setFormErrors({ ...formErrors, passwordConfirmation: "" })
+            }
+        } else {
+            yup.reach(schema, e.target.name)
+                .validate(e.target.value)
+                .then(() => {
+                    setFormErrors({ ...formErrors, [e.target.name]: "" })
+                })
+                .catch(err => {
+                    setFormErrors({ ...formErrors, [e.target.name]: err.errors[0] })
+                })
+        }
+
         let value = e.target.type === "checkbox" ? e.target.checked : e.target.value
         value = e.target.name === "role_id" ? Number(e.target.value) : value
 
@@ -116,12 +125,13 @@ export default function () {
 
     const registerUser = (e) => {
         e.preventDefault();
-        console.log(newUser);
-        console.log(yup.ref("password"))
-        // axios.post("https://ft-use-my-tech-02.herokuapp.com/api/auth/register", newUser)
-        //     .then(data => {
-        //         console.log(data);
-        //     })
+        delete newUser.term;
+        delete newUser.passwordConfirmation;
+
+        axios.post("https://ft-use-my-tech-02.herokuapp.com/api/auth/register", newUser)
+            .then(data => {
+                console.log(data);
+            })
     }
 
     return (
@@ -148,17 +158,19 @@ export default function () {
 
             <input
                 name="password"
+
                 value={newUser.password}
                 onChange={updateNewUser}
-                type="text"
+                type="password"
                 placeholder="Password"
             />
             {formErrors.password && <span>{formErrors.password}</span>}
             <input
                 name="passwordConfirmation"
+
                 value={newUser.passwordConfirmation}
                 onChange={updateNewUser}
-                type="text"
+                type="password"
                 placeholder="Re-Enter Password"
             />
             {formErrors.passwordConfirmation && <span>{formErrors.passwordConfirmation}</span>}
