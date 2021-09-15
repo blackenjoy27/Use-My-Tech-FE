@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+
 import * as yup from "yup";
 import schema from "../../validations/signupSchema";
 import axios from "axios";
+
+import { Form, Button } from "../styledcomponents/StyledEle";
 
 const initialUserInfo = {
     name: "abc",
@@ -15,62 +17,6 @@ const initialUserInfo = {
     term: false,
 }
 
-const Form = styled.form`
-    display:flex;
-    flex-direction:column;
-    background-color:#F9F3DF;
-    width:40%;
-    height:75%;
-    border:2px solid grey;
-    border-radius:20px;
-    margin:auto;
-    justify-content:center;
-    align-items:center;
-
-    input{
-        border-radius:5px;
-        margin:0.5rem;
-        width:40%;
-        height:1.5rem;
-    }
-    select{
-        width:30%;
-        margin:0.5rem;
-    }
-    label{
-        width:40%;
-        margin:0rem auto;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-    }
-    .checkBox{
-        margin:1rem 0rem;
-        width:20%;
-        height:1rem;
-    }
-    a{
-        margin-bottom:0rem;
-    }
-    span{
-        color:#ff616d;
-        display:flex;
-        width: 40%;
-        margin:0 auto;
-    }
-`
-
-const Button = styled.button`
-    width:10rem;
-    height:2.5rem;
-    margin:1rem;
-    border-radius:20px;
-    background-color: #D7E9F7;
-
-    &:hover{
-        cursor:pointer;
-    }
-`
 export default function () {
     const [newUser, setNewUser] = useState({
         name: "",
@@ -92,7 +38,7 @@ export default function () {
         role_id: "",
         term: false,
     });
-
+    const { push } = useHistory();
     useEffect(() => {
         schema.isValid(newUser).then(valid => {
             setIsDisabled(!valid)
@@ -130,7 +76,15 @@ export default function () {
 
         axios.post("https://ft-use-my-tech-02.herokuapp.com/api/auth/register", newUser)
             .then(data => {
-                console.log(data);
+                setNewUser(initialUserInfo);
+                alert("Thank you for signing up!");
+                axios.post("https://ft-use-my-tech-02.herokuapp.com/api/auth/login", {
+                    username: newUser.username,
+                    password: newUser.password
+                }).then(({ data }) => {
+                    push("/userpage");
+                    localStorage.setItem("token", data)
+                })
             })
     }
 
