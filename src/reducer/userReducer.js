@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESSFULLY } from "../Actions";
+import { LOGIN_SUCCESSFULLY } from "../actions";
 
 
 const initialState = {

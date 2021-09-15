@@ -5,7 +5,7 @@ import * as yup from "yup";
 import schema from "../../validations/signupSchema";
 import axios from "axios";
 
-import { Form, Button } from "../styledcomponents/StyledEle";
+import { SignupForm, Button } from "../styledcomponents/StyledEle";
 
 const initialUserInfo = {
     name: "abc",
@@ -89,7 +89,7 @@ export default function () {
     }
 
     return (
-        <Form onSubmit={registerUser}>
+        <SignupForm onSubmit={registerUser}>
 
             <input
                 name="name"
@@ -150,6 +150,6 @@ export default function () {
             </label>
             <Button type="submit" disabled={isDisabled}>Sign Up</Button>
             <Link to="/login">Already have registered? Login</Link>
-        </Form>
+        </SignupForm>
     )
 }

@@ -6,9 +6,9 @@ import { DirectPage, Nav } from "../styledcomponents/StyledEle";
 
 export default () => {
     return (
-        <DirectPage>
+        <DirectPage className="loginBG">
             <Nav>
-                <Link to="/">Home</Link>
+                <Link className="homeButton" to="/">Home</Link>
             </Nav>
             <LoginForm />
         </DirectPage>

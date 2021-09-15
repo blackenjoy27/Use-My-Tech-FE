@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { Form } from "../styledcomponents/StyledEle"
-import { login } from "../../Actions";
+import { FormLogin, Button } from "../styledcomponents/StyledEle"
+import { login } from "../../actions";
 import { connect } from "react-redux";
 
 const LoginForm = (props) => {
@@ -28,7 +28,7 @@ const LoginForm = (props) => {
             })
     }
     return (
-        <Form onSubmit={loginUser}>
+        <FormLogin className="loginForm" onSubmit={loginUser}>
             <label>
                 Username
                 <input
@@ -47,9 +47,9 @@ const LoginForm = (props) => {
                     onChange={updateLoginInfo}
                 />
             </label>
-            <button type="submit">Login</button>
+            <Button type="submit">Login</Button>
             <Link to="/register">Don't have an account yet? Sign up</Link>
-        </Form>
+        </FormLogin>
     )
 }
 
