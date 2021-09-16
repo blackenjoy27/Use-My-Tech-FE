@@ -1,9 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Switch, Link, Route } from "react-router-dom";
 
-import { Nav, OutterMostDiv, TopImageDiv, SVG, LogoDiv, ScrollDown } from "../styledcomponents/StyledEle";
+import About from "./About";
+import Procedures from "./Procedures";
 
-export default () => {
+import { Nav, OutterMostDiv, TopImageDiv, SVG, LogoDiv, ScrollDown, MiddleDiv, Tabs } from "../styledcomponents/StyledEle";
+
+export default ({ history }) => {
     return (
         <OutterMostDiv>
             <TopImageDiv>
@@ -26,6 +29,18 @@ export default () => {
                     <span class="text">Scroll down</span>
                 </ScrollDown>
             </TopImageDiv>
+            <MiddleDiv>
+                <Tabs>
+                    <div>
+                        <Link to="/">About</Link>
+                        <Link to="/procedures"> Procedures</Link>
+                    </div>
+                    <hr></hr>
+                </Tabs>
+                <Route exact path="/" component={About} />
+                <Route exact path="/procedures" component={Procedures} />
+
+            </MiddleDiv>
         </OutterMostDiv>
     )
 }

@@ -131,7 +131,9 @@ export const Button = styled.button`
 export const OutterMostDiv = styled.div`
     display:flex;
     flex-direction:column;
+    width:100%;
 `
+
 
 export const TopImageDiv = styled.div`
     height:100vh;
@@ -182,4 +184,50 @@ export const ScrollDown = styled.div`
     right:50%;
     margin:auto;
 
+`
+
+export const MiddleDiv = styled.div`
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    height:90rem;
+    background-color: #C2B8A3;
+`
+
+export const Tabs = styled.div`
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    margin-top:4rem;
+    height:5rem;
+    width:80%;
+
+    div{
+        display:flex;
+        margin-bottom:0rem;
+        justify-content:space-between;
+        width:30%;
+    }
+
+    a{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-decoration:none;
+        height:3.2rem;
+        font-size:1.125rem;
+        width:9rem;
+        color:#232323;
+        border:solid grey;
+        border-width:2px 2px 0px 2px;
+        border-radius: 10px 10px 0px 0px;
+    }
+    hr{
+        border-style: solid none none none;
+        border-width: 2px;
+        margin-top:0rem;
+        width:80%;
+        color:#2C394B;
+    }
 `
