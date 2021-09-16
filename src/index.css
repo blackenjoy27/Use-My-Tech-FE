@@ -241,3 +241,15 @@ body {
   justify-content: space-around;
   height: 75rem;
 }
+
+.procedureDiv {
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.detail1 {
+  height: 25rem;
+}
+.detail2 {
+  height: 35rem;
+}
