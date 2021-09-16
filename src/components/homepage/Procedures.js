@@ -11,8 +11,9 @@ const Detail = styled.div`
     margin:3rem;
     align-items:center;
     justify-content:space-around;
-    background-color:#7F7C82;
+    background-color:#865439;
     border-radius:20px;
+    box-shadow: 10px 5px 5px 5px;
     text-shadow: 1px 1px;
 
     h2{
