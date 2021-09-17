@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Switch, Link, Route } from "react-router-dom";
 
 import About from "./About";
 import Procedures from "./Procedures";
 import { motion } from "framer-motion";
 
-import { Nav, OutterMostDiv, TopImageDiv, SVG, LogoDiv, ScrollDown, MiddleDiv, Tabs } from "../styledcomponents/StyledEle";
+import { Nav, OutterMostDiv, TopImageDiv, SVG, LogoDiv, ScrollDown, MiddleDiv, Tabs, FeedbackDiv, FeedbackForm, Footer, FooterDiv, ContactDiv } from "../styledcomponents/StyledEle";
 
 export default ({ history }) => {
+    const [feedback, setFeedback] = useState("");
+
+    const updateFeedback = e => {
+        setFeedback(e.target.value);
+    }
+
+    const submitFeedback = e => {
+        e.preventDefault();
+        alert(feedback);
+    }
     return (
         <OutterMostDiv>
             <TopImageDiv>
@@ -42,8 +52,25 @@ export default ({ history }) => {
                 </Tabs>
                 <Route exact path="/" component={About} />
                 <Route exact path="/procedures" component={Procedures} />
-
             </MiddleDiv>
+            <FeedbackDiv>
+                <h1>We value your feedback!</h1>
+                <FeedbackForm onSubmit={submitFeedback}>
+                    <input onChange={updateFeedback} />
+                    <button type="submit">Submit</button>
+                </FeedbackForm>
+            </FeedbackDiv>
+            <Footer>
+                <FooterDiv>
+                    <span>
+                        © Use My Tech Inc
+                    </span>
+                    <ContactDiv>
+
+                    </ContactDiv>
+                </FooterDiv>
+            </Footer>
+
         </OutterMostDiv>
     )
 }

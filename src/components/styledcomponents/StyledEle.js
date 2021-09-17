@@ -231,3 +231,61 @@ export const Tabs = styled.div`
         color:#2C394B;
     }
 `
+
+export const FeedbackDiv = styled.div`
+    display:flex;
+    width:100%;
+    height:30rem;
+    flex-direction:column;
+    align-items:center;
+    background-color: #F8F8F8;
+    justify-content:space-around;
+    h1{
+        font-size:2.5rem;
+        color:#9E9D89;
+    }
+`
+
+export const FeedbackForm = styled.form`
+    width:50%;
+    height:40%;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    input{
+        display:flex;
+        width:60%;
+        height:100%;
+        border-radius:5px;
+        background-color:#C3BA85;
+        vertical-align:top;
+        font-size:1.25rem;
+    }
+    button{
+        border-radius:5px;
+        background-color:#F8F4E1;
+        font-size:1.25rem;
+        width:7rem;
+        height:4rem;
+    }
+`
+
+export const Footer = styled.footer`
+    width:100%;
+    background-color: #F8F8F8;
+`
+
+export const FooterDiv = styled.div`
+    display:flex;
+    border-style: solid none none none;
+    margin:auto;
+    width:80%;
+    border-top:1px solid #BBBBBB;
+    height:5rem;
+    align-items:center;
+`
+
+export const ContactDiv = styled.div`
+    display:flex;
+    
+`
