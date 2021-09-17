@@ -70,7 +70,6 @@ export default ({ history }) => {
                     </ContactDiv>
                 </FooterDiv>
             </Footer>
-
         </OutterMostDiv>
     )
 }
