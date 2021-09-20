@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 
 import { DirectPage, Nav } from "../styledcomponents/StyledEle";
 
-export default () => {
+
+export default function Login() {
     return (
         <DirectPage className="loginBG">
             <Nav>

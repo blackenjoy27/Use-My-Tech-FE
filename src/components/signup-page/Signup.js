@@ -6,7 +6,7 @@ import { DirectPage, Nav } from "../styledcomponents/StyledEle";
 
 
 
-export default () => {
+export default function Signup() {
     return (
         <DirectPage className="signupBG">
             <Nav>

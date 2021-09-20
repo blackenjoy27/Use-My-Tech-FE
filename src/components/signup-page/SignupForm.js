@@ -17,7 +17,7 @@ const initialUserInfo = {
     term: false,
 }
 
-export default function () {
+export default function SignupFormPage() {
     const [newUser, setNewUser] = useState({
         name: "",
         username: "",
