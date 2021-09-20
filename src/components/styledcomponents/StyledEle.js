@@ -252,21 +252,29 @@ export const FeedbackForm = styled.form`
     display:flex;
     justify-content:space-around;
     align-items:center;
-    input{
+
+    textarea{
         display:flex;
         width:60%;
         height:100%;
         border-radius:5px;
         background-color:#C3BA85;
-        vertical-align:top;
         font-size:1.25rem;
+        vertical-align:top;
     }
+
     button{
         border-radius:5px;
-        background-color:#F8F4E1;
-        font-size:1.25rem;
+        background-color:#9E9D89;
+        border:none;
+        font-size:1rem;
         width:7rem;
         height:4rem;
+        color:#F8F8F8;
+
+        &:hover{
+            cursor:pointer;
+        }
     }
 `
 
@@ -283,9 +291,27 @@ export const FooterDiv = styled.div`
     border-top:1px solid #BBBBBB;
     height:5rem;
     align-items:center;
+    justify-content: space-between;
 `
 
 export const ContactDiv = styled.div`
     display:flex;
+    width:15%;
+    justify-content:space-around;
+    a{
+        color:black;
+    }
+    svg{
+        height:1.65rem;
+        width:1.65rem;
+
+        &:hover{
+            cursor:pointer;
+            path{
+                fill:#FFB319;
+            }
+        }
+    }
+    
     
 `
