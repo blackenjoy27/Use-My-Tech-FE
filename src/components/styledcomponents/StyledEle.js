@@ -16,24 +16,6 @@ export const Nav = styled.nav`
     padding-top:1rem;
     padding-right:1.5rem;
 
-    
-    a{
-        display:flex;
-        width:8rem;
-        height:2.5rem;
-        border:2px solid grey;
-        justify-content:center;
-        font-size:1.3rem;
-        align-items:center;
-        border-radius:10px;
-        text-decoration:none;
-        color:#ffffff;
-        margin:1rem;
-
-        @media(max-width:1300px){
-            display:none;
-        }
-    }
 `
 
 
@@ -109,11 +91,6 @@ export const FormLogin = styled.form`
         justify-content:space-around;
         align-items:center;
     }
-
-    button{
-        width
-    }
-
     a{
         margin:1rem;
     }
@@ -236,7 +213,7 @@ export const Tabs = styled.div`
         display:flex;
         margin-bottom:0rem;
         justify-content:space-between;
-        width:30%;
+        width:32%;
     }
 
     a{
@@ -324,7 +301,7 @@ export const FooterDiv = styled.div`
 `
 
 export const ContactDiv = styled.div`
-    display:none;
+    display:flex;
     width:15%;
     justify-content:space-around;
     a{
@@ -366,5 +343,7 @@ export const BurgerDiv = styled.div`
         border-radius:10px;
     }
 
-
+    @media(max-width:1300px){
+        display:flex;
+    }
 `
