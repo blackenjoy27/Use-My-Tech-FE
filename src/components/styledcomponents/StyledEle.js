@@ -366,8 +366,5 @@ export const BurgerDiv = styled.div`
         border-radius:10px;
     }
 
-    @media(max-width:1300px){
-        display:flex;
-    }
 
 `
