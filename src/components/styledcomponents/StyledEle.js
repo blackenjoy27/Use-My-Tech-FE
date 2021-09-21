@@ -15,7 +15,7 @@ export const Nav = styled.nav`
     flex-direction:row-reverse;
     padding-top:1rem;
     padding-right:1.5rem;
-    align-items:center;
+
     
     a{
         display:flex;
@@ -29,8 +29,13 @@ export const Nav = styled.nav`
         text-decoration:none;
         color:#ffffff;
         margin:1rem;
+
+        @media(max-width:1300px){
+            display:none;
+        }
     }
 `
+
 
 
 export const SignupForm = styled.form`
@@ -139,15 +144,11 @@ export const TopImageDiv = styled.div`
     height:100vh;
     background-image: url(${imgage0});
     background-size:cover;
-
-    @media(max-height:600px){
-        background-color:silver;
-    }
 `
 
 export const SVG = styled.svg`
-    width:3rem;
-    height:3rem;
+    width:4vw;
+    height:4vw;
     path{
         fill: #FFB319;
     }
@@ -156,6 +157,21 @@ export const SVG = styled.svg`
             fill:#FFB344;
         }
     }
+
+    @media(max-width:1300px){
+        width:5vw;
+        height:5vw;
+    }
+
+    @media(max-width:1100px){
+        width:6vw;
+        height:6vw;
+    }
+
+    @media(max-width:800px){
+        width:7vw;
+        height:7vw;
+    }
 `
 
 export const LogoDiv = styled.div`
@@ -163,7 +179,6 @@ export const LogoDiv = styled.div`
     left:3rem;
     display:flex;
     justify-content:space-around;
-
     align-items:center;
     width:20%;
 
@@ -172,6 +187,20 @@ export const LogoDiv = styled.div`
 
     h1{
         color:#E7E0C9;
+    }
+
+    @media(max-width:1300px){
+        width:30vw;
+        font-size:3vw;
+        height:3rem;
+    }
+
+    @media(max-width:1100px){
+        font-size:3.5vw;
+    }
+
+    @media(max-width:800px){
+
     }
     
 `
@@ -295,7 +324,7 @@ export const FooterDiv = styled.div`
 `
 
 export const ContactDiv = styled.div`
-    display:flex;
+    display:none;
     width:15%;
     justify-content:space-around;
     a{
@@ -312,6 +341,33 @@ export const ContactDiv = styled.div`
             }
         }
     }
-    
-    
+`
+
+export const BurgerDiv = styled.div`
+    display: none;
+    flex-direction:column;
+    height:2.5rem;
+    width:2.5rem;
+    justify-content:space-around;
+    align-items:center;
+    border:2px solid grey;
+    background-color:#716F81;
+    border-radius:10px;
+
+    &:hover{
+        background-color:#BB8760;
+        cursor:pointer;
+    }
+
+    div{
+        width:25px;
+        height: 3px;
+        background-color: #ffffff;
+        border-radius:10px;
+    }
+
+    @media(max-width:1300px){
+        display:flex;
+    }
+
 `

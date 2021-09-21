@@ -5,10 +5,46 @@ import About from "./About";
 import Procedures from "./Procedures";
 import { motion } from "framer-motion";
 
-import { Nav, OutterMostDiv, TopImageDiv, SVG, LogoDiv, ScrollDown, MiddleDiv, Tabs, FeedbackDiv, FeedbackForm, Footer, FooterDiv, ContactDiv } from "../styledcomponents/StyledEle";
+import { Nav, OutterMostDiv, TopImageDiv, SVG, LogoDiv, ScrollDown, MiddleDiv, Tabs, FeedbackDiv, FeedbackForm, Footer, FooterDiv, ContactDiv, BurgerDiv } from "../styledcomponents/StyledEle";
+import styled from "styled-components";
 
+
+const NavTabs = styled.div`
+    position:absolute;
+    top:1rem;
+    right:1rem;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+    align-items:center;
+
+    @media(min-width:1300px){
+        display:none;
+    }
+`
+
+const TabContainer = styled.div`
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+    align-items:center;
+    width:100%;
+    height:70%;
+    a{
+        display:flex;
+        width:98%;
+        background-color:grey;
+        margin:0;
+        border-radius:0;
+
+        &:hover{
+            background-color:#BB8760;
+        }
+    }
+`
 export default ({ history }) => {
     const [feedback, setFeedback] = useState("");
+    const [open, setOpen] = useState(false);
 
     const updateFeedback = e => {
         setFeedback(e.target.value);
@@ -34,6 +70,19 @@ export default ({ history }) => {
                     </LogoDiv>
                     <Link className="blue" to="/login">Login</Link>
                     <Link className="green" to="/register">Sign Up</Link>
+                    <NavTabs className={open ? "burger-open" : ""}>
+                        <BurgerDiv onClick={() => setOpen(!open)}>
+                            <div />
+                            <div />
+                            <div />
+                        </BurgerDiv>
+                        {
+                            open && <TabContainer>
+                                <Link className="blue" to="/login">Login</Link>
+                                <Link className="green" to="/register">Sign Up</Link>
+                            </TabContainer>
+                        }
+                    </NavTabs>
                 </Nav>
                 <ScrollDown>
                     <div className="chevron"></div>

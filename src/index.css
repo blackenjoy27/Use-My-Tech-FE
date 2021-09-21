@@ -257,3 +257,10 @@ body {
 .detail2 {
   height: 35rem;
 }
+
+.burger-open {
+  width: 15rem;
+  height: 12rem;
+  background-color: #e6ddc6;
+  border-radius: 10px;
+}
