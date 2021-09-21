@@ -196,13 +196,13 @@ export const SVG = styled.svg`
         height:3rem;
     }
     @media(max-width:500px){
-        width:2.75rem;
-        height:2.75rem;
+        width:5rem;
+        height:5rem;
     }
-    @media(max-width:500px){
-        width:2.5rem;
-        height:2.5rem;
-    }
+    // @media(max-width:500px){
+    //     width:2.5rem;
+    //     height:2.5rem;
+    // }
     @media(max-width:380px){
         width:2.4rem;
         height:2.4rem;
@@ -231,14 +231,16 @@ export const LogoDiv = styled.div`
             font-size:1.95rem;
         }
         @media(max-width:500px){
-            font-size:1.75rem;
+            font-size:3rem;
+            color:#D3D6DB;
+            // font-size:1.75rem;
         }
-        @media(max-width:440px){
-            font-size:1.5rem;
-        }
-        @media(max-width:380px){
-            font-size:1.3rem;
-        }
+        // @media(max-width:440px){
+        //     font-size:1.5rem;
+        // }
+        // @media(max-width:380px){
+        //     font-size:1.3rem;
+        // }
     }
 
     @media(max-width:1300px){
@@ -251,7 +253,12 @@ export const LogoDiv = styled.div`
         left:2rem;
         width:50%;
     }
-    
+    @media(max-width:500px){
+        top:30%;
+        bottom:70%;
+        height:20rem;
+        flex-direction:column;
+    }
 `
 
 export const ScrollDown = styled.div`
@@ -295,6 +302,12 @@ export const Tabs = styled.div`
         @media(max-width:950px){
             width:60%;
         }
+        @media(max-width:500px){
+            width:70%;
+        }
+        @media(max-width:450px){
+            width:80%;
+        }
     }
 
     a{
@@ -312,6 +325,11 @@ export const Tabs = styled.div`
 
         &:hover{
             color:#F5FBF1;
+        }
+
+        @media(max-width:660px){
+            width:7rem;
+            font-size:1rem;
         }
     }
     hr{
@@ -435,6 +453,9 @@ export const ContactDiv = styled.div`
     }
     @media(max-width:800px){
         width:30%;
+    }
+    @media(max-width:500px){
+        width:45%;
     }
 `
 
