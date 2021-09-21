@@ -11,21 +11,41 @@ const Detail = styled.div`
     margin:3rem;
     align-items:center;
     justify-content:space-around;
-    background-color:#865439;
+    background-color:#F1F6F5;
     border-radius:20px;
-    box-shadow: 10px 5px 5px 5px;
-    text-shadow: 1px 1px;
 
     h2{
         font-size:3rem;
-        color:#FFC947;
+        color:#343A40;
     }
 
     span{
         display:flex;
         font-size:1.5rem;
-        color:#F9F3DF
+        color:#59606D;
+
+        @media(max-width:940px){
+            font-size:1.25rem;
+        }
+        @media(max-width:500px){
+            font-size:1.15rem;
+        }
+        @media(max-width:450px){
+            font-size:1rem;
+        }
     }
+
+    @media(max-width:800px){
+        width:70%;
+    }
+
+    @media(max-width:570px){
+        width:80%;
+    }
+    @media(max-width:390px){
+        width:90%;
+    }
+
 `
 
 const Procedures = () => {

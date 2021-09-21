@@ -10,7 +10,7 @@ export default function Signup() {
     return (
         <DirectPage className="signupBG">
             <Nav>
-                <Link className="homeButton" to="/">Home</Link>
+                <Link className="theTab" to="/">Home</Link>
             </Nav>
             <SignupForm />
         </DirectPage>

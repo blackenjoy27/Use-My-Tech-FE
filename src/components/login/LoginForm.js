@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { FormLogin, Button } from "../styledcomponents/StyledEle"
 import { login } from "./../../reducer/action";
 import { connect } from "react-redux";
+import { motion } from "framer-motion";
 
 const LoginForm = (props) => {
     const [user, setUser] = useState({

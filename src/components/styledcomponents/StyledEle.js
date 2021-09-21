@@ -37,10 +37,24 @@ export const SignupForm = styled.form`
         margin:0.5rem;
         width:40%;
         height:1.5rem;
+
+        @media(max-width:1100px){
+            width:45%;
+        }
+        @media(max-width:460px){
+            width:55%;
+        }
     }
     select{
+        text-align:center;
         width:30%;
         margin:0.5rem;
+        @media(max-width:1300px){
+            width:40%;
+        }
+        @media(max-width:800px){
+            width:50%;
+        }
     }
     label{
         width:40%;
@@ -48,6 +62,12 @@ export const SignupForm = styled.form`
         display:flex;
         justify-content:center;
         align-items:center;
+        @media(max-width:1200px){
+            width:56%;
+        }
+        @media(max-width:430px){
+            font-size:1rem;
+        }
     }
     .checkBox{
         margin:1rem 0rem;
@@ -63,12 +83,19 @@ export const SignupForm = styled.form`
         width: 40%;
         margin:0 auto;
     }
+
+    @media(max-width:900px){
+        width:50%;
+    }
+    @media(max-width:650px){
+        width:75%;
+    }
 `
 
 export const FormLogin = styled.form`
     display:flex;
     flex-direction:column;
-    background-color:#F3F1F5;
+    background-color:#303841;
     width:40%;
     height: 50%;
     border:2px solid grey;
@@ -76,12 +103,19 @@ export const FormLogin = styled.form`
     margin:auto;
     justify-content:center;
     align-items:center;
+    color:#EEEEEE;
 
     input{
         border-radius:5px;
         margin:0.5rem;
         width:55%;
         height:1.5rem;
+        @media(max-width:700px){
+            width:60%;
+        }
+        @media(max-width:650px){
+            margin:0.5rem;
+        }
     }
 
     label{
@@ -90,9 +124,28 @@ export const FormLogin = styled.form`
         display:flex;
         justify-content:space-around;
         align-items:center;
+        @media(max-width:800px){
+            width:65%;
+        }
+        @media(max-width:650px){
+            width:80%;
+            flex-direction:column;
+        }
     }
     a{
         margin:1rem;
+        color:#EEEEEE;
+    }
+    @media(max-width:1100px){
+        width:50%;
+    }
+    @media(max-width:900px){
+        height:55%;
+        width:60%;
+    }
+    @media(max-width:700px){
+        height:60%;
+        width:65%;
     }
 `
 
@@ -103,7 +156,7 @@ export const Button = styled.button`
     border-radius:10px;
     font-size:1rem;
     color:#ffffff;
-    background-color: #3DB2FF;
+    background-color: #343434;
 
     &:hover{
         cursor:pointer;
@@ -121,11 +174,13 @@ export const TopImageDiv = styled.div`
     height:100vh;
     background-image: url(${imgage0});
     background-size:cover;
+    background-position: center;
+
 `
 
 export const SVG = styled.svg`
-    width:4vw;
-    height:4vw;
+    width:3.5rem;
+    height:3.5rem;
     path{
         fill: #FFB319;
     }
@@ -135,20 +190,25 @@ export const SVG = styled.svg`
         }
     }
 
-    @media(max-width:1300px){
-        width:5vw;
-        height:5vw;
-    }
 
-    @media(max-width:1100px){
-        width:6vw;
-        height:6vw;
+    @media(max-width:700px){
+        width:3rem;
+        height:3rem;
     }
+    @media(max-width:500px){
+        width:2.75rem;
+        height:2.75rem;
+    }
+    @media(max-width:500px){
+        width:2.5rem;
+        height:2.5rem;
+    }
+    @media(max-width:380px){
+        width:2.4rem;
+        height:2.4rem;
+    }
+    
 
-    @media(max-width:800px){
-        width:7vw;
-        height:7vw;
-    }
 `
 
 export const LogoDiv = styled.div`
@@ -163,21 +223,33 @@ export const LogoDiv = styled.div`
     color: #ffffff;
 
     h1{
-        color:#E7E0C9;
+        color:#F5F5F5;
+        @media(max-width:1000px){
+            font-size:2.25rem;
+        }
+        @media(max-width:700px){
+            font-size:1.95rem;
+        }
+        @media(max-width:500px){
+            font-size:1.75rem;
+        }
+        @media(max-width:440px){
+            font-size:1.5rem;
+        }
+        @media(max-width:380px){
+            font-size:1.3rem;
+        }
     }
 
     @media(max-width:1300px){
-        width:30vw;
-        font-size:3vw;
-        height:3rem;
+        width:35%;
     }
-
-    @media(max-width:1100px){
-        font-size:3.5vw;
-    }
-
     @media(max-width:800px){
-
+        width:40%;
+    }
+    @media(max-width:600px){
+        left:2rem;
+        width:50%;
     }
     
 `
@@ -196,8 +268,10 @@ export const MiddleDiv = styled.div`
     display:flex;
     flex-direction:column;
     align-items:center;
-    height:90rem;
-    background-color: #C2B8A3;
+    border-style:none none solid none;
+    border-color:#2C394B;
+    border-width:1px;
+    background-color: #000000;
 `
 
 export const Tabs = styled.div`
@@ -214,6 +288,13 @@ export const Tabs = styled.div`
         margin-bottom:0rem;
         justify-content:space-between;
         width:32%;
+
+        @media(max-width:1200px){
+            width:40%;
+        }
+        @media(max-width:950px){
+            width:60%;
+        }
     }
 
     a{
@@ -224,10 +305,14 @@ export const Tabs = styled.div`
         height:3.2rem;
         font-size:1.125rem;
         width:9rem;
-        color:#232323;
+        color:#F5F5F5;
         border:solid grey;
         border-width:2px 2px 0px 2px;
         border-radius: 10px 10px 0px 0px;
+
+        &:hover{
+            color:#F5FBF1;
+        }
     }
     hr{
         border-style: solid none none none;
@@ -244,16 +329,23 @@ export const FeedbackDiv = styled.div`
     height:30rem;
     flex-direction:column;
     align-items:center;
-    background-color: #F8F8F8;
+    background-color: #000000;
     justify-content:space-around;
     h1{
         font-size:2.5rem;
-        color:#9E9D89;
+        color:#CDCDCD;
+
+        @media(max-width:600px){
+            font-size:2rem;
+        }
+        @media(max-width:500px){
+            font-size:1.75rem;
+        }
     }
 `
 
 export const FeedbackForm = styled.form`
-    width:50%;
+    width:70%;
     height:40%;
     display:flex;
     justify-content:space-around;
@@ -262,16 +354,25 @@ export const FeedbackForm = styled.form`
     textarea{
         display:flex;
         width:60%;
-        height:100%;
+        height:80%;
         border-radius:5px;
-        background-color:#C3BA85;
+        background-color:#333644;
         font-size:1.25rem;
-        vertical-align:top;
+        color:#CDCDCD;
+
+        @media(max-width:800px){
+            width:60%;
+        }
+        @media(max-width:500px){
+            font-size:2rem;
+            height:50%;
+            width:80%;
+        }
     }
 
     button{
         border-radius:5px;
-        background-color:#9E9D89;
+        background-color:#333644;
         border:none;
         font-size:1rem;
         width:7rem;
@@ -281,12 +382,25 @@ export const FeedbackForm = styled.form`
         &:hover{
             cursor:pointer;
         }
+        @media(max-width:500px){
+
+            height:3rem;
+            width:5rem;
+        }
+    }
+    @media(max-width:800px){
+        width:80%;
+    }
+    @media(max-width:500px){
+        font-size:2rem;
+        flex-direction:column;
+        height:60%;
     }
 `
 
 export const Footer = styled.footer`
     width:100%;
-    background-color: #F8F8F8;
+    background-color: #000000;
 `
 
 export const FooterDiv = styled.div`
@@ -294,10 +408,11 @@ export const FooterDiv = styled.div`
     border-style: solid none none none;
     margin:auto;
     width:80%;
-    border-top:1px solid #BBBBBB;
+    border-top:1px solid #2C394B;
     height:5rem;
     align-items:center;
     justify-content: space-between;
+    color:#CDCDCD;
 `
 
 export const ContactDiv = styled.div`
@@ -305,7 +420,7 @@ export const ContactDiv = styled.div`
     width:15%;
     justify-content:space-around;
     a{
-        color:black;
+        color:#CDCDCD;
     }
     svg{
         height:1.65rem;
@@ -314,9 +429,12 @@ export const ContactDiv = styled.div`
         &:hover{
             cursor:pointer;
             path{
-                fill:#FFB319;
+                fill:#F4F4F4;
             }
         }
+    }
+    @media(max-width:800px){
+        width:30%;
     }
 `
 
@@ -327,19 +445,19 @@ export const BurgerDiv = styled.div`
     width:2.5rem;
     justify-content:space-around;
     align-items:center;
-    border:2px solid grey;
-    background-color:#716F81;
+    border:2px solid #098dcd;
+    background-color:#000000;
     border-radius:10px;
 
     &:hover{
-        background-color:#BB8760;
+        background-color:#303841;
         cursor:pointer;
     }
 
     div{
         width:25px;
         height: 3px;
-        background-color: #ffffff;
+        background-color: #F5F5F5;
         border-radius:10px;
     }
 
