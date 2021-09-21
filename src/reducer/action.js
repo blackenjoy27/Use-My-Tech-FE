@@ -1,4 +1,4 @@
-import AxiosWithAuth from "./../helper/AxiosWithAuth";
+import AxiosWithAuth from "../helper/AxiosWithAuth";
 
 
 export const LOGIN_SUCCESSFULLY = "LOGIN_SUCCESSFULLY"

@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { FormLogin, Button } from "../styledcomponents/StyledEle"
-import { login } from "../../actions";
+import { login } from "./../../reducer/action";
 import { connect } from "react-redux";
 
 const LoginForm = (props) => {
