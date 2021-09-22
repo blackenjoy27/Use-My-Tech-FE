@@ -12,3 +12,10 @@ export const login = ({ user_id, name, role_id }) => {
     //     this is used when more than one action type is return
     // }
 }
+
+export const getUserInfo = (id) => {
+    AxiosWithAuth().get(`/api/users/${id}`)
+        .then(data => {
+            console.log(data);
+        })
+}

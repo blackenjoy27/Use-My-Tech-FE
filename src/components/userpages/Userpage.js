@@ -1,18 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router";
 import { connect } from "react-redux";
+import styled from "styled-components";
 
-const Userpage = (props) => {
+import AxiosWithAuth from "../../helper/AxiosWithAuth";
+
+const Userpage = ({ user_id, name, role_id }) => {
     const { push } = useHistory();
+
+    useEffect(() => {
+        AxiosWithAuth().get(`/api/users/${user_id}`)
+            .then(data => {
+                console.log(data);
+            })
+    }, [])
+
+
     const logout = () => {
         localStorage.removeItem("token");
         push("/")
     }
+
     return (
         <div>
-            <h1>{`User_id: ${props.user_id}`}</h1>
-            <h1>{`Name: ${props.name}`}</h1>
-            <h1>{`Role_id: ${props.role_id}`}</h1>
+            <h1>{`User_id: ${user_id}`}</h1>
+            <h1>{`Name: ${name}`}</h1>
+            <h1>{`Role_id: ${role_id}`}</h1>
             <button onClick={logout}>Loggout</button>
         </div>
     )
