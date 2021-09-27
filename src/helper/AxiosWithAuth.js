@@ -6,7 +6,7 @@ const AxiosWithAuth = () => {
         headers: {
             authorization: token,
         },
-        baseURL: "https://ft-use-my-tech-02.herokuapp.com",
+        baseURL: "http://localhost:5000/",
     })
 }
 

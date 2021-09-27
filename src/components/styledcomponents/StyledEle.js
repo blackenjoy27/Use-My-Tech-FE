@@ -486,3 +486,20 @@ export const BurgerDiv = styled.div`
         display:flex;
     }
 `
+
+export const UserIcon = styled.img`
+    width:3rem;
+    height:3rem;
+    border-radius:50%;
+
+    &:hover{
+        cursor:pointer;
+    }
+`
+
+export const TheItem = styled.div`
+    display:flex;
+    height:10rem;
+    width:20%;
+    flex-direction:column;
+`

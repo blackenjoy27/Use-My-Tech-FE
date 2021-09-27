@@ -2,9 +2,79 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import { OutterMostDiv, UserIcon } from "../styledcomponents/StyledEle";
 
 import AxiosWithAuth from "../../helper/AxiosWithAuth";
 
+
+const Header = styled.header`
+    display:flex;
+    width:80%;
+    height:4rem;
+    margin:1rem auto;
+    align-items:center;
+    justify-content:space-between;
+
+    h1{
+        font-size:2rem;
+    }
+`
+
+const Nav = styled.nav`
+    display:flex;
+    align-items:center;
+    width:20%;
+    justify-content:space-around;
+`
+
+const BurgerDiv = styled.div`
+    width:2rem;
+    height:2rem;
+    background-color:grey;
+    border:1px solid black;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+    align-items:center;
+    border-radius:3px;
+
+    div{
+        width:22px;
+        height:3px;
+        background-color:#ffffff;
+    }
+`
+const SearchForm = styled.form`
+    display:flex;
+    width:70%;
+    height:2.5rem;
+
+    margin:1rem auto;
+    justify-content:space-around;
+    align-items:center;
+    
+    select{
+        text-align-last:center;
+    }
+    input{
+        width:60%;
+        height:80%;
+        border:1px solid grey;
+        border-radius:5px;
+    }
+
+    button{
+        width:15%;
+        border-radius:5px;
+        height:90%;
+    }
+`
+
+const ItemsDiv = styled.div`
+    display:flex;
+    flex-flow:row wrap;
+    width:100%;
+`
 const Userpage = ({ user_id, name, role_id }) => {
     const [filterInfo, setFilterInfo] = useState({
         category: "",
@@ -22,7 +92,7 @@ const Userpage = ({ user_id, name, role_id }) => {
     }
 
     useEffect(() => {
-        AxiosWithAuth().get(`/api/users/${user_id}`)
+        AxiosWithAuth().get(`/api/items`)
             .then(data => {
                 console.log(data);
             })
@@ -37,9 +107,25 @@ const Userpage = ({ user_id, name, role_id }) => {
     }
 
     return (
-        <div>
-            <form onSubmit={filter}>
-                <select name="category" onChange={updateFilterInfo}>
+        <OutterMostDiv>
+            <Header>
+                <h1>
+                    Items
+                </h1>
+                <Nav>
+                    <UserIcon src="https://pbs.twimg.com/profile_images/758084549821730820/_HYHtD8F.jpg" />
+                    <h2>Kyle, Li</h2>
+                    <BurgerDiv>
+                        <div /><div /><div />
+                    </BurgerDiv>
+                </Nav>
+
+
+
+            </Header>
+
+            <SearchForm onSubmit={filter}>
+                <select name="category" className="categories" onChange={updateFilterInfo}>
                     <option value="">Categories</option>
                     <option value="cat">Cat</option>
                 </select>
@@ -49,9 +135,12 @@ const Userpage = ({ user_id, name, role_id }) => {
                     onChange={updateFilterInfo}
                 />
                 <button type="submit">Search</button>
-            </form>
+            </SearchForm>
+            <ItemsDiv>
+
+            </ItemsDiv>
             <button onClick={logout}>Loggout</button>
-        </div>
+        </OutterMostDiv>
     )
 }
 

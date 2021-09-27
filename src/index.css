@@ -321,3 +321,10 @@ body {
   background-color: #eeeeee;
   transition: 1s ease-in-out;
 }
+
+.categories {
+  width: 10rem;
+  font-size: 5rem;
+  padding: auto;
+  text-align-last: center;
+}
