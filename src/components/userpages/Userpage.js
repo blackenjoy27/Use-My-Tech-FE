@@ -90,7 +90,7 @@ const HiddenDiv = styled.div`
         font-size:1rem;
 
         &:hover{
-            background-color:#000000;
+            background-color:#222831;
             color:#F1F6F9;
             cursor:pointer;
         }
