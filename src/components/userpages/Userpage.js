@@ -32,7 +32,7 @@ const Nav = styled.nav`
 const BurgerDiv = styled.button`
     width:2rem;
     height:2rem;
-    background-color:grey;
+    background-color:#F1F6F9;
     border:1px solid black;
     display:flex;
     flex-direction:column;
@@ -46,7 +46,7 @@ const BurgerDiv = styled.button`
     div{
         width:22px;
         height:3px;
-        background-color:#ffffff;
+        background-color:#000000;
     }
 `
 const SearchForm = styled.form`
@@ -71,7 +71,7 @@ const SearchForm = styled.form`
         width:10%;
         border-radius:5px;
         height:60%;
-        background-color: #F1F6F9;
+        background-color:#F1F6F9;
 
         &:hover{
             cursor:pointer;
@@ -86,10 +86,13 @@ const HiddenDiv = styled.div`
         height:2rem;
         border-style: solid none;
         border-width:1px;
-        background-color:#E8F0F2;
+        background-color:#F1F6F9;
+        font-size:1rem;
 
         &:hover{
-            background-color:#DBE6FD;
+            background-color:#000000;
+            color:#F1F6F9;
+            cursor:pointer;
         }
     }
 `
