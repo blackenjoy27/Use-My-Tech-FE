@@ -499,17 +499,22 @@ export const UserIcon = styled.img`
 
 export const TheItem = styled.div`
     display:flex;
-    height:8rem;
+    height:25rem;
     width:21.5%;
-
+    background-color:#F1F6F9;
+    justify-content:space-around;
     flex-direction:column;
+    border-radius:20px;
     
     img{
+        width:90%;
+        margin:1rem auto;
+        height:60%;
         border-radius:20px;
     }
     h2{
         font-size:1.25rem;
-        margin:1rem;
+        margin:0.5rem 1rem;
     }
     h3{
         margin-left:1rem;

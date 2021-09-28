@@ -51,8 +51,10 @@ const BurgerDiv = styled.button`
 `
 const SearchForm = styled.form`
     display:flex;
-    width:70%;
-    height:2.5rem;
+    width:60%;
+    height:4rem;
+    background-color:#F1F6F9;
+    border-radius:20px;
 
     margin:1rem auto;
     justify-content:space-around;
@@ -60,15 +62,16 @@ const SearchForm = styled.form`
     
     input{
         width:60%;
-        height:80%;
+        height:60%;
         border:1px solid grey;
         border-radius:5px;
     }
 
     button{
-        width:15%;
+        width:10%;
         border-radius:5px;
-        height:90%;
+        height:60%;
+        background-color: #F1F6F9;
 
         &:hover{
             cursor:pointer;
