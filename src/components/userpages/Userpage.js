@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { OutterMostDiv, UserIcon } from "../styledcomponents/StyledEle";
 
 import AxiosWithAuth from "../../helper/AxiosWithAuth";
+import ItemList from "./ItemList";
+
 
 
 const Header = styled.header`
@@ -70,16 +72,13 @@ const SearchForm = styled.form`
     }
 `
 
-const ItemsDiv = styled.div`
-    display:flex;
-    flex-flow:row wrap;
-    width:100%;
-`
+
 const Userpage = ({ user_id, name, role_id }) => {
     const [filterInfo, setFilterInfo] = useState({
         category: "",
         keyword: "",
     })
+    const [items, setItems] = useState(null)
 
     const updateFilterInfo = e => {
         setFilterInfo({ ...filterInfo, [e.target.name]: e.target.value });
@@ -93,7 +92,8 @@ const Userpage = ({ user_id, name, role_id }) => {
 
     useEffect(() => {
         AxiosWithAuth().get(`/api/items`)
-            .then(data => {
+            .then(({ data }) => {
+                setItems(data);
                 console.log(data);
             })
     }, [])
@@ -136,9 +136,7 @@ const Userpage = ({ user_id, name, role_id }) => {
                 />
                 <button type="submit">Search</button>
             </SearchForm>
-            <ItemsDiv>
-
-            </ItemsDiv>
+            <ItemList items={items} />
             <button onClick={logout}>Loggout</button>
         </OutterMostDiv>
     )
