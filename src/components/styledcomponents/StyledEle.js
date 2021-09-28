@@ -499,7 +499,54 @@ export const UserIcon = styled.img`
 
 export const TheItem = styled.div`
     display:flex;
-    height:10rem;
-    width:22%;
+    height:8rem;
+    width:21.5%;
+
     flex-direction:column;
+    
+    img{
+        border-radius:20px;
+    }
+    h2{
+        font-size:1.25rem;
+        margin:1rem;
+    }
+    h3{
+        margin-left:1rem;
+    }
+`
+export const PriceDiv = styled.div`
+    display:flex;
+    width:100%;
+    justify-content:space-between;
+    align-items:center;
+
+    svg{
+        height: 1.75rem;
+        width: 1.75rem;
+
+        &:hover{
+            cursor:pointer;
+        }
+    }
+`
+
+export const AddSVG = styled.svg`
+    path{
+        fill: #4aa96c;
+    }
+`
+
+export const RemoveSVG = styled.svg`
+    path{
+        fill: #FF8474;
+    }
+`
+
+export const ActionDiv = styled.div`
+    display:flex;
+    width:30%;
+    height:100%;
+    justify-content:space-around;
+
 `

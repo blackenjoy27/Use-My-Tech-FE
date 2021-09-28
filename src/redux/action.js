@@ -1,16 +1,10 @@
 import AxiosWithAuth from "../helper/AxiosWithAuth";
-
-
 export const LOGIN_SUCCESSFULLY = "LOGIN_SUCCESSFULLY"
+export const ADD_ITEM_TO_CHECK_OUT = "ADD_ITEM_TO_CHECK_OUT"
+export const REMOVE_ITEM_FROM_CHECK_OUT = "REMOVE_ITEM_FROM_CHECK_OUT"
 
 export const login = ({ user_id, name, role_id }) => {
     return { type: LOGIN_SUCCESSFULLY, role_id: role_id, name: name, user_id: user_id }
-    // return dispatch=>{
-    //     dispatch({type: LOGIN_SUCCESSFULLY, role_id, name, user_id })
-    //     dispatch({type: LOGIN_SUCCESSFULLY, role_id, name, user_id })
-
-    //     this is used when more than one action type is return
-    // }
 }
 
 export const getUserInfo = (id) => {
@@ -19,3 +13,12 @@ export const getUserInfo = (id) => {
             console.log(data);
         })
 }
+
+export const addItemToCheckout = (item) => {
+    return { type: ADD_ITEM_TO_CHECK_OUT, payload: item.item_id }
+}
+
+export const removeItemFromCheckout = (item) => {
+    return { type: REMOVE_ITEM_FROM_CHECK_OUT, payload: item.item_id }
+}
+
