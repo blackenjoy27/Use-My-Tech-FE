@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESSFULLY, ADD_ITEM_TO_CHECK_OUT, REMOVE_ITEM_FROM_CHECK_OUT } from "./action";
+import { LOGIN_SUCCESSFULLY, ADD_ITEM_TO_CHECK_OUT, REMOVE_ITEM_FROM_CHECK_OUT, PLACE_ORDER_SUCCESSFULLY } from "./action";
 
 
 const initialState = {
@@ -26,6 +26,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 checkoutItems: state.checkoutItems.filter(item => item.item_id !== action.payload)
+            }
+        case PLACE_ORDER_SUCCESSFULLY:
+            return {
+                ...state,
+                checkoutItems: []
             }
         default: {
             return state;

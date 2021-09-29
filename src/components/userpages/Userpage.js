@@ -174,7 +174,9 @@ const Userpage = ({ user_id, name, role_id }) => {
                         {items && <ItemList items={items} popUp={popMessage} />}
                     </>
                 }} />
-                <Route exact path="/userpage/checkout" component={Checkout} />
+                <Route exact path="/userpage/checkout">
+                    <Checkout popUp={popMessage} />
+                </Route>
                 <Route path="/userpage" render={() => <Redirect to="/userpage" />} />
             </Switch>
 

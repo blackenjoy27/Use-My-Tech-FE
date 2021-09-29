@@ -18,7 +18,7 @@ function App() {
         </Route>
         <Route exact path="/" component={Homepage} />
         <Route exact path="/procedures" component={Homepage} />
-        {/* <Route path="/" render={() => <Redirect to="/" />} /> */}
+        <Route path="/" render={() => <Redirect to="/" />} />
       </Switch>
     </Router>
   );
