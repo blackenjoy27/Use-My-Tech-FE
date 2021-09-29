@@ -500,7 +500,8 @@ export const UserIcon = styled.img`
 export const TheItem = styled.div`
     display:flex;
     height:25rem;
-    width:21.5%;
+    width:22%;
+    margin:1rem;
     background-color:#F1F6F9;
     justify-content:space-around;
     flex-direction:column;

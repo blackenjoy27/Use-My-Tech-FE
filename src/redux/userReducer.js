@@ -25,7 +25,7 @@ const reducer = (state = initialState, action) => {
         case REMOVE_ITEM_FROM_CHECK_OUT:
             return {
                 ...state,
-                checkoutItems: state.checkoutItems.filter(item => item !== action.payload)
+                checkoutItems: state.checkoutItems.filter(item => item.item_id !== action.payload)
             }
         default: {
             return state;

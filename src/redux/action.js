@@ -15,7 +15,7 @@ export const getUserInfo = (id) => {
 }
 
 export const addItemToCheckout = (item) => {
-    return { type: ADD_ITEM_TO_CHECK_OUT, payload: item.item_id }
+    return { type: ADD_ITEM_TO_CHECK_OUT, payload: item }
 }
 
 export const removeItemFromCheckout = (item) => {

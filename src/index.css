@@ -131,6 +131,10 @@ table {
 * {
   box-sizing: border-box;
 }
+
+a:hover {
+  cursor: pointer;
+}
 #notFound {
   font-size: 3rem;
 }
@@ -343,7 +347,7 @@ body {
 .pagination {
   display: flex;
   width: 50%;
-  margin: 4rem auto 4rem;
+  margin: 4rem auto;
   justify-content: space-around;
 }
 
@@ -358,9 +362,24 @@ body {
   color: #6c7ac9;
 }
 
-.pagination a:hover {
-  cursor: pointer;
+.checkoutPaginate {
+  display: flex;
+  margin: 2rem auto;
+  justify-content: space-around;
 }
+
+.checkoutPaginate a {
+  display: flex;
+  width: 3rem;
+  height: 2rem;
+  margin: 0 1rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid #6c7ac9;
+  color: #6c7ac9;
+}
+
 .active a {
   color: #ffffff;
   background: #6c7ac9;

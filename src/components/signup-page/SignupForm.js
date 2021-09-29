@@ -137,12 +137,6 @@ export default function SignupFormPage() {
                 placeholder="Email"
             />
             {formErrors.email && <span>{formErrors.email}</span>}
-
-            <select name="role_id" onChange={updateNewUser}>
-                <option value="">----Select Your Role----</option>
-                <option value={1}>Owner</option>
-                <option value={2}>Renter</option>
-            </select>
             {formErrors.role_id && <span>{formErrors.role_id}</span>}
             <label>
                 <input name="term" className="checkBox" type="checkbox" onChange={updateNewUser} />

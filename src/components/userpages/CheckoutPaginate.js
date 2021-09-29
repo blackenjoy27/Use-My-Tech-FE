@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactPaginate from 'react-paginate';
-import Item from "./Item";
+import CheckoutItem from "./CheckoutItem";
 
 
 import styled from 'styled-components';
@@ -8,21 +8,29 @@ const ItemsDiv = styled.div`
     display:flex;
     flex-flow:row wrap;
     width:100%;
-    margin-top:2rem;
+    padding:2.5rem;
+    border:2px #90AACB;
+    border-style: solid none;
     justify-content:space-around;
+
+    a{
+        &:hover{
+            cursor:pointer;
+        }
+    }
 `;
 
 const ContentSection = styled.section`
     display:flex;
     flex-direction:column;
 `
-export default class ItemList extends Component {
+export default class CheckoutPaginate extends Component {
     constructor(props) {
         super(props);
         this.state = {
             offset: 0,
             data: [],
-            perPage: 12,
+            perPage: 8,
             currentPage: 0
         };
         this.handlePageClick = this
@@ -32,7 +40,7 @@ export default class ItemList extends Component {
     receivedData() {
         const data = this.props.items;
         const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
-        const postData = slice.map(item => <Item key={item.item_id} info={item} notifi={this.props.popUp} />)
+        const postData = slice.map(item => <CheckoutItem key={item.item_id} info={item} notifi={this.props.popUp} />)
 
         this.setState({
             pageCount: Math.ceil(data.length / this.state.perPage),
@@ -54,6 +62,11 @@ export default class ItemList extends Component {
     componentDidMount() {
         this.receivedData()
     }
+    componentDidUpdate(preProp, preState) {
+        if (preProp.items.length !== this.props.items.length) {
+            this.receivedData();
+        }
+    }
     render() {
         return (
             <ContentSection>
@@ -69,7 +82,7 @@ export default class ItemList extends Component {
                     marginPagesDisplayed={2}
                     pageRangeDisplayed={5}
                     onPageChange={this.handlePageClick}
-                    containerClassName={"pagination"}
+                    containerClassName={"checkoutPaginate"}
                     activeClassName={"active"} />
             </ContentSection>
         )

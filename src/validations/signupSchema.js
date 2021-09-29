@@ -15,9 +15,6 @@ export default yup.object().shape({
         .required("Email is required"),
 
     password: yup.string().required('Password is required').min(6),
-    role_id: yup
-        .string()
-        .oneOf(["1", "2"], "User role is required and can be change later"),
     term: yup.boolean().oneOf([true], "Must Agree with the term & policy")
 
 })

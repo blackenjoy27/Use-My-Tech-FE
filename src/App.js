@@ -9,7 +9,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <PrivateRoute exact path="/userpage" component={Userpage} />
+        <PrivateRoute path="/userpage" component={Userpage} />
         <Route exact path="/register">
           <Signup />
         </Route>
@@ -18,7 +18,7 @@ function App() {
         </Route>
         <Route exact path="/" component={Homepage} />
         <Route exact path="/procedures" component={Homepage} />
-        <Route path="/" render={() => <Redirect to="/" />} />
+        {/* <Route path="/" render={() => <Redirect to="/" />} /> */}
       </Switch>
     </Router>
   );
