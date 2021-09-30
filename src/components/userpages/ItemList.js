@@ -32,7 +32,7 @@ export default class ItemList extends Component {
     receivedData() {
         const data = this.props.items;
         const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
-        const postData = slice.map(item => <Item key={item.item_id} info={item} notifi={this.props.popUp} />)
+        const postData = slice.map(item => <Item key={item.item_id} info={item} notifi={this.props.popUp} openModal={this.props.openModal} />)
 
         this.setState({
             pageCount: Math.ceil(data.length / this.state.perPage),

@@ -8,6 +8,9 @@ import Checkout from "./Checkout";
 import AxiosWithAuth from "../../helper/AxiosWithAuth";
 import ItemList from "./ItemList";
 
+import ItemModal from "./ItemModal";
+
+
 
 
 const Header = styled.header`
@@ -99,6 +102,40 @@ const HiddenDiv = styled.div`
     }
 `
 
+const NewItemModal = styled.div`
+    display:flex;
+    flex-direction:column;
+    padding:1rem 2rem;
+    height:100%;
+    border:1px solid grey;
+
+    h1{
+        font-size:2rem;
+    }
+    form{
+        margin: 1rem 0rem;
+        display:flex;
+        flex-direction:column;
+        justify-content:space-around;
+        height:80%;
+        border:1px solid grey;
+    }
+    button{
+        position:absolute;
+        font-size:1.25rem;
+        width:10rem;
+        height:4rem;
+        right:5rem;
+        bottom:4rem;
+        background-color:#B5DEFF;
+        border-style:none;
+        border-radius:10px;
+        &:hover{
+            cursor:pointer;
+        }
+    }
+`
+
 
 const Userpage = ({ user_id, name, role_id }) => {
     const [filterInfo, setFilterInfo] = useState({
@@ -106,6 +143,8 @@ const Userpage = ({ user_id, name, role_id }) => {
         keyword: "",
     })
     const [items, setItems] = useState(null)
+    const [postModalOpen, setPostModalOpen] = useState(false);
+    const [type, setType] = useState(0);
 
     const popMessage = (message) => {
         document.querySelector(".message").classList.add("showMessage")
@@ -137,9 +176,20 @@ const Userpage = ({ user_id, name, role_id }) => {
         push("/")
     }
 
+    const openModal = (type) => {
+        setType(type);
+        setPostModalOpen(true);
+    }
+
+    const closeItemModal = () => {
+        setType(0);
+        setPostModalOpen(false);
+    }
+
 
     return (
         <OutterMostDiv className="itemsPage">
+            <ItemModal type={type} setOpen={setPostModalOpen} open={postModalOpen} closeModal={closeItemModal} />
             <Header>
                 <h1 className="pageName">Items</h1>
                 <Nav>
@@ -153,7 +203,7 @@ const Userpage = ({ user_id, name, role_id }) => {
             <div className="message"></div>
             <HiddenDiv className="burgerContainer">
                 <button onClick={() => { push("/userpage/checkout"); document.querySelector(".pageName").textContent = "Checkout Items"; }}>Check Out</button>
-                <button>Post Item</button>
+                <button onClick={() => openModal(0)}>Post Item</button>
                 <button onClick={logout}>Log out</button>
             </HiddenDiv>
             <Switch>
@@ -171,7 +221,7 @@ const Userpage = ({ user_id, name, role_id }) => {
                             />
                             <button type="submit">Search</button>
                         </SearchForm>
-                        {items && <ItemList items={items} popUp={popMessage} />}
+                        {items && <ItemList items={items} popUp={popMessage} openModal={openModal} />}
                     </>
                 }} />
                 <Route exact path="/userpage/checkout">
