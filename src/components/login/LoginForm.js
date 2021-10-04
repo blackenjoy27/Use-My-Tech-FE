@@ -19,9 +19,9 @@ const LoginForm = (props) => {
         axios.post("http://localhost:5000/api/auth/login", user)
             .then(({ data }) => {
                 localStorage.setItem("token", data.token);
-                console.log(data);
-                props.dispatch(login(data));
-
+                localStorage.setItem("user_id", data.user_id);
+                const name = data.message.substring(13);
+                props.dispatch(login(data.user_id, name));
                 push("/userpage");
             })
             .catch((err) => {

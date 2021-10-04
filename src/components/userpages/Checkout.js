@@ -3,8 +3,9 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import CheckoutPaginate from "./CheckoutPaginate";
 import Modal from 'react-modal';
-import { placeOrder } from "../../redux/action";
+import { clearCart } from "../../redux/action";
 import { useHistory } from "react-router";
+import AxiosWithAuth from "../../helper/AxiosWithAuth";
 
 const CheckoutItemSection = styled.section`
     display:flex;
@@ -197,17 +198,28 @@ const PriceConfirmDiv = styled.div`
 
 
 const Checkout = (props) => {
-    const { items, popUp } = props;
+    const { items, user_id, popUp, clearCart, getItems } = props;
     const [price, setPrice] = useState(0);
     const [modalIsOpen, setIsOpen] = useState(false);
     const { push } = useHistory();
+
+    const placeOrder = async () => {
+        await items.forEach(item => {
+            AxiosWithAuth().put(`/api/items/rent/${item.item_id}`, { user_id })
+                .then(({ data }) => {
+                })
+                .catch(error => {
+                    alert(`Rent ${item.item_name}#${item.item_id} failed: \nIt's possible that this item is already been rented.`)
+                })
+        })
+        clearCart();
+        getItems();
+    }
 
     useEffect(() => {
         setPrice(items.reduce((total, item) => {
             return total += parseInt(item.monthlyPrice)
         }, 0))
-        console.log(items)
-
     }, [items])
     return (
         <>
@@ -278,7 +290,7 @@ const Checkout = (props) => {
                             <button onClick={() => {
                                 setIsOpen(false);
                                 popUp("Transaction Completed Successfully~");
-                                props.dispatch(placeOrder(items));
+                                placeOrder();
                             }}>Place Order</button>
                         </PriceConfirmDiv>
                     </Container>
@@ -291,6 +303,7 @@ const Checkout = (props) => {
 export default connect((state) => {
     return {
         items: state.checkoutItems,
+        user_id: state.user_id,
     }
-})(Checkout);
+}, { clearCart })(Checkout);
 

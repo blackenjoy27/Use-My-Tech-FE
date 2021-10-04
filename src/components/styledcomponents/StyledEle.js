@@ -556,3 +556,8 @@ export const ActionDiv = styled.div`
     justify-content:space-around;
 
 `
+
+export const ItemTitle = styled.div`
+    display:flex;
+    align-items:center;
+`

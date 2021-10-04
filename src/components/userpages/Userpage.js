@@ -102,42 +102,9 @@ const HiddenDiv = styled.div`
     }
 `
 
-const NewItemModal = styled.div`
-    display:flex;
-    flex-direction:column;
-    padding:1rem 2rem;
-    height:100%;
-    border:1px solid grey;
-
-    h1{
-        font-size:2rem;
-    }
-    form{
-        margin: 1rem 0rem;
-        display:flex;
-        flex-direction:column;
-        justify-content:space-around;
-        height:80%;
-        border:1px solid grey;
-    }
-    button{
-        position:absolute;
-        font-size:1.25rem;
-        width:10rem;
-        height:4rem;
-        right:5rem;
-        bottom:4rem;
-        background-color:#B5DEFF;
-        border-style:none;
-        border-radius:10px;
-        &:hover{
-            cursor:pointer;
-        }
-    }
-`
 
 
-const Userpage = ({ user_id, name, role_id }) => {
+const Userpage = (props) => {
     const [filterInfo, setFilterInfo] = useState({
         category: "",
         keyword: "",
@@ -145,6 +112,7 @@ const Userpage = ({ user_id, name, role_id }) => {
     const [items, setItems] = useState(null)
     const [postModalOpen, setPostModalOpen] = useState(false);
     const [type, setType] = useState(0);
+    const [time, setTime] = useState(0);
 
     const popMessage = (message) => {
         document.querySelector(".message").classList.add("showMessage")
@@ -165,15 +133,29 @@ const Userpage = ({ user_id, name, role_id }) => {
     }
 
     useEffect(() => {
-        AxiosWithAuth().get(`/api/items`)
-            .then(({ data }) => {
-                setItems(data);
-                console.log(data);
-            })
+        if (!props.name && !props.user_id) {
+            const user_id = localStorage.getItem("user_id");
+            AxiosWithAuth().get(`/api/users/${user_id}`)
+                .then(({ data }) => {
+                    console.log("User data", data);
+                })
+        }
+        getAllAvailableItems();
     }, [])
+
+
     const logout = () => {
         localStorage.removeItem("token");
         push("/")
+    }
+
+    const getAllAvailableItems = () => {
+        AxiosWithAuth().get(`/api/items`)
+            .then(({ data }) => {
+                setTime(time + 1)
+                console.log(time);
+                setItems(data);
+            })
     }
 
     const openModal = (type) => {
@@ -194,7 +176,7 @@ const Userpage = ({ user_id, name, role_id }) => {
                 <h1 className="pageName">Items</h1>
                 <Nav>
                     <UserIcon src="https://pbs.twimg.com/profile_images/758084549821730820/_HYHtD8F.jpg" />
-                    <h2>Kyle, Li</h2>
+                    <h2>{props.name}</h2>
                     <BurgerDiv onClick={() => { document.querySelector(".burgerContainer").classList.toggle("open"); }}>
                         <div /><div /><div />
                     </BurgerDiv>
@@ -225,7 +207,7 @@ const Userpage = ({ user_id, name, role_id }) => {
                     </>
                 }} />
                 <Route exact path="/userpage/checkout">
-                    <Checkout popUp={popMessage} />
+                    <Checkout popUp={popMessage} getItems={getAllAvailableItems} />
                 </Route>
                 <Route path="/userpage" render={() => <Redirect to="/userpage" />} />
             </Switch>
@@ -250,6 +232,5 @@ export default connect(state => {
     return {
         user_id: state.user_id,
         name: state.name,
-        role_id: state.role_id
     }
 })(Userpage);

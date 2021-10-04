@@ -1,5 +1,5 @@
 import React from "react";
-import { TheItem, PriceDiv, AddSVG, RemoveSVG, ActionDiv } from "../styledcomponents/StyledEle";
+import { TheItem, PriceDiv, AddSVG, RemoveSVG, ActionDiv, ItemTitle } from "../styledcomponents/StyledEle";
 import { addItemToCheckout, removeItemFromCheckout } from "../../redux/action";
 import { connect } from "react-redux";
 
@@ -11,7 +11,9 @@ const Item = (props) => {
     return (
         <TheItem>
             <img src={info.url}></img>
-            <h2>{info.item_name}</h2>
+            <ItemTitle><h2>{info.item_name}</h2><span>#{info.item_id}</span></ItemTitle>
+
+
             <PriceDiv>
                 <h3>{`$${info.monthlyPrice}/month`}</h3>
                 <ActionDiv>
