@@ -4,6 +4,7 @@ import Item from "./Item";
 
 
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 const ItemsDiv = styled.div`
     display:flex;
     flex-flow:row wrap;
@@ -16,7 +17,7 @@ const ContentSection = styled.section`
     display:flex;
     flex-direction:column;
 `
-export default class ItemList extends Component {
+class ItemList extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -54,9 +55,16 @@ export default class ItemList extends Component {
     componentDidMount() {
         this.receivedData()
     }
+
+    componentDidUpdate(preProps, preState) {
+        if (preProps.items.length !== this.props.items.length) {
+            this.receivedData();
+        }
+    }
     render() {
         return (
             <ContentSection>
+
                 <ItemsDiv>
                     {this.state.postData}
                 </ItemsDiv>
@@ -71,7 +79,14 @@ export default class ItemList extends Component {
                     onPageChange={this.handlePageClick}
                     containerClassName={"pagination"}
                     activeClassName={"active"} />
+
             </ContentSection>
         )
     }
 }
+
+export default connect((state) => {
+    return {
+        checkoutItems: state.checkoutItems
+    }
+})(ItemList);

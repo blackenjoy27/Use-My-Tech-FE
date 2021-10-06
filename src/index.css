@@ -423,3 +423,15 @@ body {
   transition: 1s ease-in-out;
   border-radius: 10px;
 }
+
+.noItems {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem auto;
+  font-size: 2.5rem;
+  border-radius: 20px;
+  width: 70vw;
+  height: 40vw;
+  background-color: #f1f6f9;
+}

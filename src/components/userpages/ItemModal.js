@@ -151,7 +151,7 @@ const ItemModal = ({ type, open, closeModal }) => {
                         <h1>Item Info</h1>
                         <Div>
                             <img src={itemInfo.url} alt={`Image for ${itemInfo.item_name}`} />
-                            <span>{`Item Name: ${itemInfo.item_name}`}</span>
+                            <span>{`Item Name: ${itemInfo.item_name} #${itemInfo.item_id}`}</span>
                             <span>{`Fee/month: ${itemInfo.monthlyPrice}`}</span>
                             <span>{`Notes: ${itemInfo.notes}`}</span>
                         </Div>

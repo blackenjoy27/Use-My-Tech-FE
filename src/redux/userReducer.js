@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESSFULLY, ADD_ITEM_TO_CHECK_OUT, REMOVE_ITEM_FROM_CHECK_OUT, PLACE_ORDER_SUCCESSFULLY } from "./action";
+import { LOGIN_SUCCESSFULLY, ADD_ITEM_TO_CHECK_OUT, REMOVE_ITEM_FROM_CHECK_OUT, PLACE_ORDER_SUCCESSFULLY, RESTORE_CHECKOUT_ITEMS } from "./action";
 
 
 const initialState = {
@@ -19,6 +19,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 checkoutItems: [...state.checkoutItems, action.payload]
+            }
+        case RESTORE_CHECKOUT_ITEMS:
+            return {
+                ...state,
+                checkoutItems: action.payload
             }
         case REMOVE_ITEM_FROM_CHECK_OUT:
             return {

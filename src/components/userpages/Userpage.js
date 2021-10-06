@@ -8,6 +8,8 @@ import Checkout from "./Checkout";
 import AxiosWithAuth from "../../helper/AxiosWithAuth";
 import ItemList from "./ItemList";
 
+import { EmptyMessage } from "./Checkout";
+import { login, restoreCart } from "../../redux/action";
 import ItemModal from "./ItemModal";
 
 
@@ -106,13 +108,12 @@ const HiddenDiv = styled.div`
 
 const Userpage = (props) => {
     const [filterInfo, setFilterInfo] = useState({
-        category: "",
+        category_id: 0,
         keyword: "",
     })
-    const [items, setItems] = useState(null)
+    const [items, setItems] = useState([])
     const [postModalOpen, setPostModalOpen] = useState(false);
     const [type, setType] = useState(0);
-    const [time, setTime] = useState(0);
 
     const popMessage = (message) => {
         document.querySelector(".message").classList.add("showMessage")
@@ -123,37 +124,55 @@ const Userpage = (props) => {
     }
 
     const updateFilterInfo = e => {
-        setFilterInfo({ ...filterInfo, [e.target.name]: e.target.value });
+        setFilterInfo({
+            ...filterInfo, [e.target.name]: e.target.value
+        });
     }
     const { push } = useHistory();
 
-    const filter = e => {
+    const filter = (e) => {
         e.preventDefault();
-        console.log(filterInfo);
+        console.log("filter info", filterInfo);
+        AxiosWithAuth().post(`/api/items/search/keyword`, filterInfo)
+            .then(({ data }) => {
+                console.log("Return Data", data);
+                setItems(data);
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 
     useEffect(() => {
-        if (!props.name && !props.user_id) {
-            const user_id = localStorage.getItem("user_id");
-            AxiosWithAuth().get(`/api/users/${user_id}`)
-                .then(({ data }) => {
-                    console.log("User data", data);
-                })
+        let checkoutItems;
+        const user_id = localStorage.getItem("user_id");
+        if (localStorage.getItem("checkoutItems").length !== 0) {
+            checkoutItems = JSON.parse(localStorage.getItem("checkoutItems"));
         }
+        AxiosWithAuth().get(`/api/users/${user_id}`)
+            .then(({ data }) => {
+                console.log("User Obj", data);
+                props.login(data.user_id, data.name);
+            })
+        props.restoreCart(checkoutItems);
         getAllAvailableItems();
     }, [])
 
+    useEffect(() => {
+        localStorage.setItem("checkoutItems", JSON.stringify(props.checkoutItems))
+    }, [props.checkoutItems])
 
     const logout = () => {
         localStorage.removeItem("token");
+        localStorage.removeItem("user_id");
+        localStorage.removeItem("checkoutItems");
         push("/")
     }
+
 
     const getAllAvailableItems = () => {
         AxiosWithAuth().get(`/api/items`)
             .then(({ data }) => {
-                setTime(time + 1)
-                console.log(time);
                 setItems(data);
             })
     }
@@ -188,13 +207,16 @@ const Userpage = (props) => {
                 <button onClick={() => openModal(0)}>Post Item</button>
                 <button onClick={logout}>Log out</button>
             </HiddenDiv>
+
             <Switch>
                 <Route exact path="/userpage" render={() => {
                     return <>
                         <SearchForm onSubmit={filter}>
-                            <select name="category" className="categories" onChange={updateFilterInfo}>
-                                <option value="">Categories</option>
-                                <option value="cat">Cat</option>
+                            <select name="category_id" className="categories" onChange={updateFilterInfo}>
+                                <option value={0}>Categories</option>
+                                <option value={1}>Xbox</option>
+                                <option value={2}>Camera</option>
+                                <option value={3}>Tv</option>
                             </select>
                             <input
                                 name="keyword"
@@ -203,11 +225,11 @@ const Userpage = (props) => {
                             />
                             <button type="submit">Search</button>
                         </SearchForm>
-                        {items && <ItemList items={items} popUp={popMessage} openModal={openModal} />}
+                        {items.length !== 0 ? <ItemList items={items} popUp={popMessage} openModal={openModal} /> : <h1 className="noItems">No items</h1>}
                     </>
                 }} />
                 <Route exact path="/userpage/checkout">
-                    <Checkout popUp={popMessage} getItems={getAllAvailableItems} />
+                    <Checkout popUp={popMessage} getItems={getAllAvailableItems} openModal={openModal} />
                 </Route>
                 <Route path="/userpage" render={() => <Redirect to="/userpage" />} />
             </Switch>
@@ -232,5 +254,6 @@ export default connect(state => {
     return {
         user_id: state.user_id,
         name: state.name,
+        checkoutItems: state.checkoutItems
     }
-})(Userpage);
+}, { login, restoreCart })(Userpage);

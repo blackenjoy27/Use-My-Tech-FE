@@ -3,7 +3,6 @@ import LoginForm from "./LoginForm";
 import { Link } from "react-router-dom";
 
 import { DirectPage, Nav } from "../styledcomponents/StyledEle";
-import { motion } from "framer-motion";
 
 
 export default function Login() {

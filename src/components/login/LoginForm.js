@@ -20,8 +20,7 @@ const LoginForm = (props) => {
             .then(({ data }) => {
                 localStorage.setItem("token", data.token);
                 localStorage.setItem("user_id", data.user_id);
-                const name = data.message.substring(13);
-                props.dispatch(login(data.user_id, name));
+                localStorage.setItem("checkoutItems", JSON.stringify([]));
                 push("/userpage");
             })
             .catch((err) => {

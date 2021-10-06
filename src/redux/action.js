@@ -3,6 +3,7 @@ export const LOGIN_SUCCESSFULLY = "LOGIN_SUCCESSFULLY"
 export const ADD_ITEM_TO_CHECK_OUT = "ADD_ITEM_TO_CHECK_OUT"
 export const REMOVE_ITEM_FROM_CHECK_OUT = "REMOVE_ITEM_FROM_CHECK_OUT"
 export const PLACE_ORDER_SUCCESSFULLY = "PLACE_ORDER_SUCCESSFULLY"
+export const RESTORE_CHECKOUT_ITEMS = "RESTORE_CHECKOUT_ITEMS"
 
 export const login = (user_id, name) => {
     return { type: LOGIN_SUCCESSFULLY, name: name, user_id: user_id }
@@ -25,5 +26,9 @@ export const removeItemFromCheckout = (item) => {
 
 export const clearCart = () => {
     return { type: PLACE_ORDER_SUCCESSFULLY, payload: "" }
+}
+
+export const restoreCart = (items) => {
+    return { type: RESTORE_CHECKOUT_ITEMS, payload: items }
 }
 

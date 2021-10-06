@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReactPaginate from 'react-paginate';
 import CheckoutItem from "./CheckoutItem";
+import Item from './Item';
 
 
 import styled from 'styled-components';
@@ -40,7 +41,7 @@ export default class CheckoutPaginate extends Component {
     receivedData() {
         const data = this.props.items;
         const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
-        const postData = slice.map(item => <CheckoutItem key={item.item_id} info={item} notifi={this.props.popUp} />)
+        const postData = slice.map(item => <CheckoutItem key={item.item_id} info={item} notifi={this.props.popUp} openModal={this.props.openModal} />)
 
         this.setState({
             pageCount: Math.ceil(data.length / this.state.perPage),
